@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		C862208216F1193500891331 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C862208116F1193500891331 /* Foundation.framework */; };
-		C862208516F1193500891331 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C862208416F1193500891331 /* main.m */; };
 		C862208916F1193500891331 /* CapSort.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C862208816F1193500891331 /* CapSort.1 */; };
+		C862209716F1195700891331 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C862209116F1195700891331 /* main.m */; };
+		C862209916F1195700891331 /* NSString+capSort.m in Sources */ = {isa = PBXBuildFile; fileRef = C862209516F1195700891331 /* NSString+capSort.m */; };
+		C862209C16F119AB00891331 /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = C862209B16F119AB00891331 /* Tests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,9 +30,13 @@
 /* Begin PBXFileReference section */
 		C862207D16F1193500891331 /* CapSort */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = CapSort; sourceTree = BUILT_PRODUCTS_DIR; };
 		C862208116F1193500891331 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		C862208416F1193500891331 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C862208716F1193500891331 /* CapSort-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CapSort-Prefix.pch"; sourceTree = "<group>"; };
 		C862208816F1193500891331 /* CapSort.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = CapSort.1; sourceTree = "<group>"; };
+		C862209116F1195700891331 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C862209416F1195700891331 /* NSString+capSort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+capSort.h"; sourceTree = "<group>"; };
+		C862209516F1195700891331 /* NSString+capSort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+capSort.m"; sourceTree = "<group>"; };
+		C862209A16F119AA00891331 /* Tests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tests.h; path = ../Tests.h; sourceTree = "<group>"; };
+		C862209B16F119AB00891331 /* Tests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Tests.m; path = ../Tests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,7 +79,11 @@
 		C862208316F1193500891331 /* CapSort */ = {
 			isa = PBXGroup;
 			children = (
-				C862208416F1193500891331 /* main.m */,
+				C862209A16F119AA00891331 /* Tests.h */,
+				C862209B16F119AB00891331 /* Tests.m */,
+				C862209116F1195700891331 /* main.m */,
+				C862209416F1195700891331 /* NSString+capSort.h */,
+				C862209516F1195700891331 /* NSString+capSort.m */,
 				C862208816F1193500891331 /* CapSort.1 */,
 				C862208616F1193500891331 /* Supporting Files */,
 			);
@@ -139,7 +149,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C862208516F1193500891331 /* main.m in Sources */,
+				C862209716F1195700891331 /* main.m in Sources */,
+				C862209916F1195700891331 /* NSString+capSort.m in Sources */,
+				C862209C16F119AB00891331 /* Tests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

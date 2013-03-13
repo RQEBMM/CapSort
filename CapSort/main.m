@@ -1,22 +1,45 @@
 //
 //  main.m
-//  CapSort
+//  ArraySort
 //
-//  Created by Ken Thomsen on 3/13/13.
+//  Created by Ben McCloskey on 3/13/13.
 //  Copyright (c) 2013 Ben McCloskey. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
+#import "NSString+capSort.h"
+#import "Tests.h"
+
+
+
+char (*capSort(char *arrayOfChars));
+void showOutput(const char *arrayToPrint);
+
+char sampleArray[]= {'A','B','c','d','e','f','g','H','I','j','k','l','m','N','o','p','q','r','s','t','U','V','w','x','y','z','1','2','3','4','5','6','7','8','9','0'};
 
 int main(int argc, const char * argv[])
 {
-
 	@autoreleasepool {
-	    
-	    // insert code here...
-	    NSLog(@"Hello, World!");
-	    
+		if ([[[NSString alloc] init]runAllTests])
+		{
+		printf("Sample:\nInput :%s",sampleArray);
+		showOutput(capSort(sampleArray));
 	}
-    return 0;
+	}
+	return 0;
 }
 
+char (*capSort(char *arrayOfChars))
+{
+	//convert to NSString
+	NSString *arrayAsNSString = [NSString stringWithCString:arrayOfChars encoding:NSUTF8StringEncoding];
+	//run transformation on NSString
+	arrayAsNSString = [arrayAsNSString capSort];
+	// convert back and return array
+	return [arrayAsNSString UTF8String];
+}
+
+void showOutput(const char *arrayToPrint)
+{
+	printf("\nOutput:%s",arrayToPrint);
+}
