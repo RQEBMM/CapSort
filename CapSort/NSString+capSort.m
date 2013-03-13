@@ -9,36 +9,42 @@
 #import "NSString+capSort.h"
 
 /*
- method that takes an array of characters and returns an array of the same characters in reversed order with every consonant between 'a' and 'z' lower cased and every vowel between 'a' and 'z' upper cased. Prove your implementation works.
+ method that  Prove your implementation works.
  */
 
 @implementation NSString (capSort)
 
+//takes a string of characters and returns a string of the same characters in reversed order with every consonant between 'a' and 'z' lower cased and every vowel between 'a' and 'z' upper cased.
 -(NSString *)capSort
 {	
-	NSCharacterSet *setOfLowerCaseVowels= [NSCharacterSet characterSetWithCharactersInString:@"aeiouy"];
-	NSCharacterSet *setOfUpperCaseConsonants = [NSCharacterSet characterSetWithCharactersInString:@"BCDFGHJKLMNPQRSTVWXZ"];
-	NSString *newString = @"";
-	
-	//work on input string back-to-front
+    //initialize sets to search, and the string we're going to build
+    //only need lower case vowels since upper case vowels do not need to have case changed
+	NSCharacterSet *setOfLowerCaseVowels= [NSCharacterSet characterSetWithCharactersInString:@"aeiou"];
+    //same for upper case consonants
+	NSCharacterSet *setOfUpperCaseConsonants = [NSCharacterSet characterSetWithCharactersInString:@"BCDFGHJKLMNPQRSTVWXYZ"];	
 	//we'll build the new string front-to-back
+	NSString *newString = @"";
+	//and work on the input string back-to-front
 	for (NSUInteger x = [self length];x > 0;x--)
 	{
 		//grab a single character
 		unichar charAtIndex = [self characterAtIndex:x-1];
-		//if a lower case vowel
+		//if a lower case vowel:
 		if ([setOfLowerCaseVowels characterIsMember:charAtIndex])
 		{
-			//make upper case (via bit-flipping) and place at beginning
-			charAtIndex = charAtIndex - (32);
+			//make upper case via bit manipulation 
+            //all UTF8 characters follow ASCII binary layout
+            //so upper case and lower case characters are 32 bits apart
+            //since unichars are type unsigned long int
+			charAtIndex = charAtIndex - 32;
 		}
-		//else if an upper case consonant
+		//else if an upper case consonant:
 		else if ([setOfUpperCaseConsonants characterIsMember:charAtIndex])
 		{
-			//make lower case and place at beginning
-			charAtIndex = charAtIndex + (32);
+			//make lower case
+			charAtIndex = charAtIndex + 32;
 		}
-		//append char to new string
+		//append char to end of new string
 		newString = [NSString stringWithFormat:@"%@%@",newString,[NSString stringWithCharacters:&charAtIndex length:1]];
 	}
 	//and we're done!
@@ -90,6 +96,9 @@
 	return testsAllPassed;
 }
 
+//all tests give a sample input, the expected output, the perform the method on the sample input and see if it matches the expected output.
+
+//tests that the order of characters is reversed
 -(BOOL)testReversal
 {
 	NSString *reversalSample  = @"123456789";
@@ -122,8 +131,8 @@
 
 -(BOOL)testVowelCoverage
 {
-	NSString *vowelCoverageSample  = @"aeiouy";
-	NSString *vowelCoverageAnswer  = @"YUOIEA";
+	NSString *vowelCoverageSample  = @"aeiou";
+	NSString *vowelCoverageAnswer  = @"UOIEA";
 	
 	NSString *testArray = [vowelCoverageSample capSort];
 	
@@ -132,8 +141,8 @@
 
 -(BOOL)testConsonantCoverage
 {
-	NSString *consonantCoverageSample  = @"BCDFGHJKLMNPQRSTVWXZ";
-	NSString *consonantCoverageAnswer  = @"zxwvtsrqpnmlkjhgfdcb";
+	NSString *consonantCoverageSample  = @"BCDFGHJKLMNPQRSTVWXYZ";
+	NSString *consonantCoverageAnswer  = @"zyxwvtsrqpnmlkjhgfdcb";
 	
 	NSString *testArray = [consonantCoverageSample capSort];
 	
