@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'CapSort' target in the 'CapSort' project
+//
+
+#ifdef __OBJC__
+	#import <Foundation/Foundation.h>
+#endif
